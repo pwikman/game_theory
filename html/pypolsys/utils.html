@@ -1,0 +1,1516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>pypolsys.utils API documentation</title>
+<meta name="description" content="Define some utility functions to pass *easily* polynomials and variables
+partitions to `PPLSYS_PLP` …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pypolsys.utils</code></h1>
+</header>
+<section id="section-intro">
+<p>Define some utility functions to pass <em>easily</em> polynomials and variables
+partitions to <code>PPLSYS_PLP</code>.</p>
+<p>Changing the partition has a strong impact on the number of paths to track
+in the homotopy. <code>PPLSYS_PLP</code> supports
+* 1-homogeneous, denoted by h,
+* m-homogeneous, denoted by mh,
+* partitioned linear product, denoted by plp.</p>
+<p>For more details on <code>PPLSYS_PLP</code> partition, See</p>
+<blockquote>
+<p>Wise, Steven M., Andrew J. Sommese, and Layne T. Watson. "Algorithm 801:
+POLSYS_PLP: A partitioned linear product homotopy code for solving polynomial
+systems of equations." ACM Transactions on Mathematical Software (TOMS)
+26.1 (2000): 176-200.</p>
+</blockquote>
+<p>For discussion on partitions and polynomials system types (dense, sparse, determinental), see</p>
+<blockquote>
+<p>Verschelde, Jan. "Polynomial homotopies for dense, sparse and determinantal
+systems." arXiv preprint math/9907060 (1999).
+and the references therein.</p>
+</blockquote>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+# This file is part of pypolsys, A python wrapper to `POLSYS_PLP`
+# fortran90 package from Layne T. Watson, Steven M. Wise,
+# Andrew J. Sommese, August, 1998.
+
+# pypolsys is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# pypolsys is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with pypolsys.  If not, see &lt;https://www.gnu.org/licenses/&gt;.
+
+&#34;&#34;&#34;
+Define some utility functions to pass *easily* polynomials and variables
+partitions to `PPLSYS_PLP`.
+
+Changing the partition has a strong impact on the number of paths to track
+in the homotopy. `PPLSYS_PLP` supports
+  * 1-homogeneous, denoted by h,
+  * m-homogeneous, denoted by mh,
+  * partitioned linear product, denoted by plp.
+
+For more details on `PPLSYS_PLP` partition, See
+&gt; Wise, Steven M., Andrew J. Sommese, and Layne T. Watson. &#34;Algorithm 801:
+&gt; POLSYS_PLP: A partitioned linear product homotopy code for solving polynomial
+&gt; systems of equations.&#34; ACM Transactions on Mathematical Software (TOMS)
+&gt; 26.1 (2000): 176-200.
+
+For discussion on partitions and polynomials system types (dense, sparse, determinental), see
+&gt; Verschelde, Jan. &#34;Polynomial homotopies for dense, sparse and determinantal
+&gt; systems.&#34; arXiv preprint math/9907060 (1999).
+and the references therein.
+&#34;&#34;&#34;
+
+import numpy as np
+from pypolsys import polsys
+
+def fromSympy(P):
+    &#34;&#34;&#34; Create polsys polynomial from sympy list of Poly. All variables
+    should be present in the generator.
+
+    Parameters
+    ----------
+    P : list
+        A list of sympy poly objects.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x, y&#39;)
+    &gt;&gt;&gt; fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),\
+                   sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    (2,
+    array([4, 3]...),
+    array([-3.+0.j,  3.+0.j,  2.+0.j, -1.+0.j,
+           -1.+0.j,  1.+0.j,  3.+0.j]),
+    array([[0, 0],
+           [0, 1],
+           [1, 0],
+           [1, 1],
+           [0, 0],
+           [1, 1],
+           [2, 0]]...))
+    &#34;&#34;&#34;
+    # Number of variables
+    N = len(P)
+    # Check if all polys have the same Generator
+    if all([p.gens == P[0].gens for p in P]) is False:
+        raise ValueError(&#39;All polynomial should have the same generator (.gens).&#39;)
+
+    coef_list = []
+    deg_list = []
+
+    # Conversion
+    n_coef_per_eq = np.zeros((N,), dtype=np.int32)
+    for n, p in enumerate(P):
+        pd = p.as_dict()
+        k = 0
+        coef_list_n = []
+        deg_list_n = []
+        for key, val in pd.items():
+            coef_list_n.append(val)
+            deg_list_n.append(list(key))
+            k += 1
+        # store the number of terms for this polynomial
+        n_coef_per_eq[n] = k
+        # convert to array
+        coef_arr_n = np.array(coef_list_n, dtype=complex)
+        deg_arr_n = np.array(deg_list_n, dtype=np.int32)
+        # Sort Them
+        index = np.lexsort(np.fliplr(deg_arr_n).T)
+        deg_list.append(deg_arr_n[index, :].copy())
+        coef_list.append(coef_arr_n[index].copy())
+
+    return N, n_coef_per_eq, np.hstack(coef_list), np.vstack(deg_list)
+
+
+def from1Darray(P):
+    &#34;&#34;&#34; Create polsys polynomial from 1D array corresponding to a univariate
+    polynomial. The first term is the constant; assume dense representation.
+
+    Parameters
+    ----------
+    P : iterable
+        Coefficient of the polynomial ordered by ascending order.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+
+    Examples
+    --------
+    Consider the following example
+        ```
+        x**2 - 3*x + 2 = 0
+        ```
+    With 2 solutions in C : {2, 1}
+    &gt;&gt;&gt; from1Darray([2., -3., 1.])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    (1,
+     array([3]...),
+     array([ 2.+0.j, -3.+0.j,  1.+0.j]),
+     array([[0],
+            [1],
+            [2]]...)
+    &#34;&#34;&#34;
+    # Number of variables
+    N = len(P)
+    return (1, np.array([N], dtype=np.int32), np.array(P, dtype=complex),
+            np.arange(0, N, dtype=np.int32).reshape(-1, 1))
+
+
+def solve_univar(P, tracktol=1e-10, finaltol=1e-12, singtol=1e-14, dense=False):
+    &#34;&#34;&#34; Solve univariate polynomial ordered by ascending power order.
+
+    This function is a short hand to solve univariate case where the calling
+    sequence can be simplified.
+
+    Parameters
+    ----------
+    P : iterable
+        Coefficient of the polynomial ordered by ascending order.
+    tracktol : float
+        is the local error tolerance allowed the path tracker along
+        the path.
+    finaltol : float
+        is the accuracy desired for the final solution.  It is used
+        for both the absolute and relative errors in a mixed error criterion.
+   singtol : float
+       is the singularity test threshold used by `SINGSYS_PLP`.  If
+       `singtol &lt;= 0.0` on input, then `singtol` is reset to a default value.
+    dense : bool
+       if `True`, select the `TARGET_SYSTEM_USER` optimized for dense polynomial
+       (horner). If `False` (default) the defaut `POLSYS_PLP TARGET_SYSTEM` is
+       used. The default choice is safer.
+
+    Returns
+    -------
+    roots : array
+        are the complex roots of the polynomial.
+
+    Remarks
+    --------
+    For convenience the homogeneous variable due to the complex projective space
+    are not return with this simplified interface.
+
+    Examples
+    --------
+    Consider the following example
+    ```
+    x**2 - 3*x + 2 = 0
+    ```
+    With 2 solutions in C : {2, 1}
+    &gt;&gt;&gt; roots = solve_univar([2., -3., 1.])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    &gt;&gt;&gt; np.sort(roots.real)
+    array([1., 2.])
+    &#34;&#34;&#34;
+    out4polsys = from1Darray(P)
+    # Pass it to POLSYS_PLP
+    polsys.init_poly(*out4polsys)
+    # Create homogeneous partition
+    part = make_h_part(1)
+    # Pass it to POLSYS_PLP
+    polsys.init_partition(*part)
+    # Solve
+    bplp = polsys.solve(tracktol, finaltol, singtol, dense)
+    # Get the roots, array of size (N+1) x bplp
+    roots = polsys.myroots
+    return roots[0, :]
+
+
+
+def di(all_deg, n_coef_per_eq):
+    &#34;&#34;&#34; Return the degree of each equation and the total degree.
+
+    This quantities are usefull to estimate the number of isolated solution
+    of the polynomial system [Bezout Theorem].
+
+    Parameters
+    ----------
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficient
+
+    Returns
+    -------
+    d : int
+        The degree.
+    dt : int
+        the total degree.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x y&#39;)
+    &gt;&gt;&gt; N, n_coef_per_eq, all_coef, all_deg = fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),\
+                                                         sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE
+    &gt;&gt;&gt; di(all_deg, n_coef_per_eq)
+    ([2, 2], 4)
+    &#34;&#34;&#34;
+    d = []
+    nini = 0
+    for N in n_coef_per_eq:
+        dmax = np.max(np.sum(all_deg[nini:nini+N, :], axis=1))
+        d.append(dmax)
+        nini += N
+
+    dt = np.prod(d)
+
+    return d, dt
+
+
+def make_mh_part(N, var_list):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for m-homogeneous partition.
+
+    Multi-homogeneous or m-homogeneous partition allow to group unknwons into sets,
+    The partition will be the same for all equations.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+    var_list : list
+        A list containing the group of variables used for all equations.
+        All the variables must be present only once in each sublist.
+        e. g. with 3 variables: [[1], [2], [3]], or [[1, 2], [3]] or
+        [[3, 2], [1]].
+        Note the index **must start at 1** to be compatible with fortran.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+
+    Examples
+    --------
+    &gt;&gt;&gt; make_mh_part(3, [[1, 2], [3]]) # doctest: +NORMALIZE_WHITESPACE
+    (3,
+    array([2., 2., 2.]),
+    array([[2, 1],
+           [2, 1],
+           [2, 1]]),
+    array([[[1., 2., 0.],
+            [3., 0., 0.]],
+          [[1., 2., 0.],
+           [3., 0., 0.]],
+          [[1., 2., 0.],
+           [3., 0., 0.]]]))
+    &#34;&#34;&#34;
+    # multi-homogeneous order
+    m = len(var_list)
+    # populated matrix for fortran
+    num_set = np.ones((N,)) * m
+    num_indice = np.array([len(part) for part in var_list])
+    num_indices = np.repeat(num_indice.reshape(1, -1), N, axis=0)
+    # create full index array
+    # this the same for all row
+    mindex = np.zeros((1, m, N))
+    for i, part in enumerate(var_list):
+        mindex[0, i, 0:num_indice[i]] = np.array(part)
+    index = np.repeat(mindex, N, axis=0)
+    return N, num_set, num_indices, index
+
+
+def make_h_part(N):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for homogeneous partition.
+
+    The partition will contain all variables, this equivalent to a 1-homogeneous
+    partition. With this partition, the number of tracked paths will correspond to
+    the total degree (Bézout Number).
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+    &#34;&#34;&#34;
+    return make_mh_part(N, [list(range(1, N+1))])
+
+
+def make_plp_part(N, var_list):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for plp-homogeneous partition.
+
+    Compared to m-homogeneous partition, plp partition allow to change
+    the partition for each equation. With this partition, the number of
+    tracked paths will correspond to Bézout PLP number.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+    var_list : list
+        A list containing the group of variables used for each equation.
+        All the variables must be present only once in each equation sublist.
+        e. g. with 3 variables, len(var_list) = 3 and the sublists looks like
+        [[[1], [2, 3]], [[2], [1, 3]], [[3], [1, 2]]] or
+        [[[1, 2, 3]], [[2], [1], [3]], [[3], [1, 2]]]
+        Note the index **must start at 1** to be compatible with fortran.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+    &#34;&#34;&#34;
+    # Check if N == len(var_list)
+    if N != len(var_list):
+        raise ValueError(&#39;len(var_list) is {} instead of {}&#39;.format(len(var_list), N))
+
+    # populated input matrices for fortran
+    num_set = np.array([len(part) for part in var_list])
+    num_indices = np.zeros((N, N))
+    # create full index array
+    # this the same for all row
+    index = np.zeros((N, max(num_set), N))
+    for i, part in enumerate(var_list):
+        for j, var in enumerate(part):
+            num_indices[i, j] = len(var)
+            index[i, j, 0:len(var)] = np.array(var)
+
+    return N, num_set, num_indices, index
+
+
+def toDense(N, n_coef_per_eq, all_coef, all_deg, preserve=True):
+    &#34;&#34;&#34; Convert a *sparse* list of mononials suitable for `POLSYS_PLP`
+    into a list of ordered monimials of a dense polynomials.
+
+    Such preprocessing is **mandatory to use multiple variable Horner scheme**,
+    ie `dense=True` in `polysys.solve`.
+    For nearly dense polynomial, this method can significantly speed the polynomial
+    and the Jacobian evaluation during the tracking.
+
+      - Some absent monomial may be added to preserve the dense structure.
+      - All monomials are listed left to right. The rightmost variable degree will
+        change for each terms.
+      - If a monimial is added to preserve the structure, its degree is set to 0,
+        to avoid to change the Bezout Number computation in `POLSYS_PLP`.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+    preserve : bool, optional
+        Put the degree of vanishing coefficient to 0 to avoid to change Bezout number
+        computation in `POLSYS_PLP` if dense structure is used. The default is True.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+    Possible to enhance Horner speed if the highest degree is on the first variable.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x y&#39;)
+    &gt;&gt;&gt; sparse = fromSympy([sym.poly(3j*x**3 + 1, (x))])
+    &gt;&gt;&gt; toDense(*sparse)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+      &gt; 200.0 % more coefs after conversion to dense.
+    (1,
+    array([4]...), array([1.+0.j, 0.+0.j, 0.+0.j, 0.+3.j]),
+    array([[0],
+          [0],
+          [0],
+         [3]]...))
+    &#34;&#34;&#34;
+    # dmax contains the degree max in all variable for each equation
+    dmax = np.zeros((N, N), dtype=np.int32)
+
+    # setup new coefs matrix
+    deg_list = []
+    coef_list = []
+    n_coef_per_eq_ = np.zeros_like(n_coef_per_eq)
+    c = []
+    # loop or equations
+    start = 0
+    for n in range(0, N):
+        Nn = n_coef_per_eq[n]
+        deg_n = all_deg[start:(start+Nn)]
+        dmax[n, :] = np.max(deg_n, axis=0)
+        # store ite
+        deg_mat = np.zeros(dmax[n, :] + 1, dtype=complex)
+
+        for coef, deg in zip(all_coef[start:(start+Nn)], deg_n):
+            deg_mat[tuple(deg)] = coef
+        c.append(deg_mat)
+        # extract the indices and value
+        deg_i = np.zeros((deg_mat.size, N), dtype=np.int32)
+        coef_i = np.zeros((deg_mat.size,), dtype=complex)
+        n_coef_per_eq_[n] = deg_mat.size
+        k = 0
+        for index, val in np.ndenumerate(deg_mat):
+            if (val == 0) and preserve:
+                # Put degree to 0 to avoid to change bezout Number for 0
+                deg_i[k, :] = np.zeros_like(index)
+            else:
+                deg_i[k, :] = np.array(index)
+            coef_i[k] = val
+            k += 1
+        deg_list.append(deg_i)
+        coef_list.append(coef_i)
+
+        start += Nn
+
+    print(&#39;  &gt; {} % more coefs after conversion to dense.&#39;.format(np.sum(n_coef_per_eq_)
+                                                         / np.sum(n_coef_per_eq)
+                                                         * 100.))
+    return N, n_coef_per_eq_, np.hstack(coef_list), np.vstack(deg_list)
+
+
+# if __name__ == &#39;__main__&#39;:
+#     import doctest
+#     doctest.testmod()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pypolsys.utils.di"><code class="name flex">
+<span>def <span class="ident">di</span></span>(<span>all_deg, n_coef_per_eq)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the degree of each equation and the total degree.</p>
+<p>This quantities are usefull to estimate the number of isolated solution
+of the polynomial system [Bezout Theorem].</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>all_deg</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the degrees of each monimial for each equation,
+starting by the first one.</dd>
+<dt><strong><code>n_coef_per_eq</code></strong> :&ensp;<code>array</code></dt>
+<dd>The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+total number of coefficient</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>d</code></strong> :&ensp;<code>int</code></dt>
+<dd>The degree.</dd>
+<dt><strong><code>dt</code></strong> :&ensp;<code>int</code></dt>
+<dd>the total degree.</dd>
+</dl>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; x, y = sym.symbols('x y')
+&gt;&gt;&gt; N, n_coef_per_eq, all_coef, all_deg = fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),                                                         sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE
+&gt;&gt;&gt; di(all_deg, n_coef_per_eq)
+([2, 2], 4)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def di(all_deg, n_coef_per_eq):
+    &#34;&#34;&#34; Return the degree of each equation and the total degree.
+
+    This quantities are usefull to estimate the number of isolated solution
+    of the polynomial system [Bezout Theorem].
+
+    Parameters
+    ----------
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficient
+
+    Returns
+    -------
+    d : int
+        The degree.
+    dt : int
+        the total degree.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x y&#39;)
+    &gt;&gt;&gt; N, n_coef_per_eq, all_coef, all_deg = fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),\
+                                                         sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE
+    &gt;&gt;&gt; di(all_deg, n_coef_per_eq)
+    ([2, 2], 4)
+    &#34;&#34;&#34;
+    d = []
+    nini = 0
+    for N in n_coef_per_eq:
+        dmax = np.max(np.sum(all_deg[nini:nini+N, :], axis=1))
+        d.append(dmax)
+        nini += N
+
+    dt = np.prod(d)
+
+    return d, dt</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.from1Darray"><code class="name flex">
+<span>def <span class="ident">from1Darray</span></span>(<span>P)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create polsys polynomial from 1D array corresponding to a univariate
+polynomial. The first term is the constant; assume dense representation.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>P</code></strong> :&ensp;<code>iterable</code></dt>
+<dd>Coefficient of the polynomial ordered by ascending order.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations</dd>
+<dt><strong><code>n_coef_per_eq</code></strong> :&ensp;<code>array</code></dt>
+<dd>The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+total number of coefficeint</dd>
+<dt><strong><code>all_coef</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the coefficients of each monimial for each equation,
+starting by the first one.</dd>
+<dt><strong><code>all_deg</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the degrees of each monimial for each equation,
+starting by the first one.
+This is an array such the line number is the terms number and the column contain
+contains the degree of each variable.
+ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_poly</code>.</p>
+<h2 id="examples">Examples</h2>
+<p>Consider the following example
+<code>x**2 - 3*x + 2 = 0</code>
+With 2 solutions in C : {2, 1}</p>
+<pre><code class="language-python-repl">&gt;&gt;&gt; from1Darray([2., -3., 1.])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+(1,
+ array([3]...),
+ array([ 2.+0.j, -3.+0.j,  1.+0.j]),
+ array([[0],
+        [1],
+        [2]]...)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from1Darray(P):
+    &#34;&#34;&#34; Create polsys polynomial from 1D array corresponding to a univariate
+    polynomial. The first term is the constant; assume dense representation.
+
+    Parameters
+    ----------
+    P : iterable
+        Coefficient of the polynomial ordered by ascending order.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+
+    Examples
+    --------
+    Consider the following example
+        ```
+        x**2 - 3*x + 2 = 0
+        ```
+    With 2 solutions in C : {2, 1}
+    &gt;&gt;&gt; from1Darray([2., -3., 1.])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    (1,
+     array([3]...),
+     array([ 2.+0.j, -3.+0.j,  1.+0.j]),
+     array([[0],
+            [1],
+            [2]]...)
+    &#34;&#34;&#34;
+    # Number of variables
+    N = len(P)
+    return (1, np.array([N], dtype=np.int32), np.array(P, dtype=complex),
+            np.arange(0, N, dtype=np.int32).reshape(-1, 1))</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.fromSympy"><code class="name flex">
+<span>def <span class="ident">fromSympy</span></span>(<span>P)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create polsys polynomial from sympy list of Poly. All variables
+should be present in the generator.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>P</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list of sympy poly objects.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations</dd>
+<dt><strong><code>n_coef_per_eq</code></strong> :&ensp;<code>array</code></dt>
+<dd>The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+total number of coefficeint</dd>
+<dt><strong><code>all_coef</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the coefficients of each monimial for each equation,
+starting by the first one.</dd>
+<dt><strong><code>all_deg</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the degrees of each monimial for each equation,
+starting by the first one.
+This is an array such the line number is the terms number and the column contain
+contains the degree of each variable.
+ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_poly</code>.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; x, y = sym.symbols('x, y')
+&gt;&gt;&gt; fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),                   sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+(2,
+array([4, 3]...),
+array([-3.+0.j,  3.+0.j,  2.+0.j, -1.+0.j,
+       -1.+0.j,  1.+0.j,  3.+0.j]),
+array([[0, 0],
+       [0, 1],
+       [1, 0],
+       [1, 1],
+       [0, 0],
+       [1, 1],
+       [2, 0]]...))
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fromSympy(P):
+    &#34;&#34;&#34; Create polsys polynomial from sympy list of Poly. All variables
+    should be present in the generator.
+
+    Parameters
+    ----------
+    P : list
+        A list of sympy poly objects.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x, y&#39;)
+    &gt;&gt;&gt; fromSympy([sym.poly(2*x + 3*y - x*y -3, (x,y)),\
+                   sym.poly(3*x**2 + x*y - 1, (x,y))])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    (2,
+    array([4, 3]...),
+    array([-3.+0.j,  3.+0.j,  2.+0.j, -1.+0.j,
+           -1.+0.j,  1.+0.j,  3.+0.j]),
+    array([[0, 0],
+           [0, 1],
+           [1, 0],
+           [1, 1],
+           [0, 0],
+           [1, 1],
+           [2, 0]]...))
+    &#34;&#34;&#34;
+    # Number of variables
+    N = len(P)
+    # Check if all polys have the same Generator
+    if all([p.gens == P[0].gens for p in P]) is False:
+        raise ValueError(&#39;All polynomial should have the same generator (.gens).&#39;)
+
+    coef_list = []
+    deg_list = []
+
+    # Conversion
+    n_coef_per_eq = np.zeros((N,), dtype=np.int32)
+    for n, p in enumerate(P):
+        pd = p.as_dict()
+        k = 0
+        coef_list_n = []
+        deg_list_n = []
+        for key, val in pd.items():
+            coef_list_n.append(val)
+            deg_list_n.append(list(key))
+            k += 1
+        # store the number of terms for this polynomial
+        n_coef_per_eq[n] = k
+        # convert to array
+        coef_arr_n = np.array(coef_list_n, dtype=complex)
+        deg_arr_n = np.array(deg_list_n, dtype=np.int32)
+        # Sort Them
+        index = np.lexsort(np.fliplr(deg_arr_n).T)
+        deg_list.append(deg_arr_n[index, :].copy())
+        coef_list.append(coef_arr_n[index].copy())
+
+    return N, n_coef_per_eq, np.hstack(coef_list), np.vstack(deg_list)</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.make_h_part"><code class="name flex">
+<span>def <span class="ident">make_h_part</span></span>(<span>N)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create <code>POLSYS_PLP</code> arguments for homogeneous partition.</p>
+<p>The partition will contain all variables, this equivalent to a 1-homogeneous
+partition. With this partition, the number of tracked paths will correspond to
+the total degree (Bézout Number).</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variable and equations.</dd>
+<dt><strong><code>num_set</code></strong> :&ensp;<code> array(N)</code></dt>
+<dd>&nbsp;</dd>
+<dt>The number of set for each polynomial equation.</dt>
+<dt><strong><code>num_indices</code></strong> :&ensp;<code>array(N,
+NUM_SETS)</code></dt>
+<dd>Contains the 'list' of all the coefficients, sorting such poly1 coef, poly2 coef&hellip;</dd>
+<dt><strong><code>index</code></strong> :&ensp;<code>array (N, NUM_SETS, NUM_INDICES)</code></dt>
+<dd>Contains the 'list' of all the variable, in each set for each equation.</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_partition</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_h_part(N):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for homogeneous partition.
+
+    The partition will contain all variables, this equivalent to a 1-homogeneous
+    partition. With this partition, the number of tracked paths will correspond to
+    the total degree (Bézout Number).
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+    &#34;&#34;&#34;
+    return make_mh_part(N, [list(range(1, N+1))])</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.make_mh_part"><code class="name flex">
+<span>def <span class="ident">make_mh_part</span></span>(<span>N, var_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create <code>POLSYS_PLP</code> arguments for m-homogeneous partition.</p>
+<p>Multi-homogeneous or m-homogeneous partition allow to group unknwons into sets,
+The partition will be the same for all equations.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations.</dd>
+<dt><strong><code>var_list</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list containing the group of variables used for all equations.
+All the variables must be present only once in each sublist.
+e. g. with 3 variables: [[1], [2], [3]], or [[1, 2], [3]] or
+[[3, 2], [1]].
+Note the index <strong>must start at 1</strong> to be compatible with fortran.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variable and equations.</dd>
+<dt><strong><code>num_set</code></strong> :&ensp;<code> array(N)</code></dt>
+<dd>&nbsp;</dd>
+<dt>The number of set for each polynomial equation.</dt>
+<dt><strong><code>num_indices</code></strong> :&ensp;<code>array(N,
+NUM_SETS)</code></dt>
+<dd>Contains the 'list' of all the coefficients, sorting such poly1 coef, poly2 coef&hellip;</dd>
+<dt><strong><code>index</code></strong> :&ensp;<code>array (N, NUM_SETS, NUM_INDICES)</code></dt>
+<dd>Contains the 'list' of all the variable, in each set for each equation.</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_partition</code>.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; make_mh_part(3, [[1, 2], [3]]) # doctest: +NORMALIZE_WHITESPACE
+(3,
+array([2., 2., 2.]),
+array([[2, 1],
+       [2, 1],
+       [2, 1]]),
+array([[[1., 2., 0.],
+        [3., 0., 0.]],
+      [[1., 2., 0.],
+       [3., 0., 0.]],
+      [[1., 2., 0.],
+       [3., 0., 0.]]]))
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_mh_part(N, var_list):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for m-homogeneous partition.
+
+    Multi-homogeneous or m-homogeneous partition allow to group unknwons into sets,
+    The partition will be the same for all equations.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+    var_list : list
+        A list containing the group of variables used for all equations.
+        All the variables must be present only once in each sublist.
+        e. g. with 3 variables: [[1], [2], [3]], or [[1, 2], [3]] or
+        [[3, 2], [1]].
+        Note the index **must start at 1** to be compatible with fortran.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+
+    Examples
+    --------
+    &gt;&gt;&gt; make_mh_part(3, [[1, 2], [3]]) # doctest: +NORMALIZE_WHITESPACE
+    (3,
+    array([2., 2., 2.]),
+    array([[2, 1],
+           [2, 1],
+           [2, 1]]),
+    array([[[1., 2., 0.],
+            [3., 0., 0.]],
+          [[1., 2., 0.],
+           [3., 0., 0.]],
+          [[1., 2., 0.],
+           [3., 0., 0.]]]))
+    &#34;&#34;&#34;
+    # multi-homogeneous order
+    m = len(var_list)
+    # populated matrix for fortran
+    num_set = np.ones((N,)) * m
+    num_indice = np.array([len(part) for part in var_list])
+    num_indices = np.repeat(num_indice.reshape(1, -1), N, axis=0)
+    # create full index array
+    # this the same for all row
+    mindex = np.zeros((1, m, N))
+    for i, part in enumerate(var_list):
+        mindex[0, i, 0:num_indice[i]] = np.array(part)
+    index = np.repeat(mindex, N, axis=0)
+    return N, num_set, num_indices, index</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.make_plp_part"><code class="name flex">
+<span>def <span class="ident">make_plp_part</span></span>(<span>N, var_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create <code>POLSYS_PLP</code> arguments for plp-homogeneous partition.</p>
+<p>Compared to m-homogeneous partition, plp partition allow to change
+the partition for each equation. With this partition, the number of
+tracked paths will correspond to Bézout PLP number.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations.</dd>
+<dt><strong><code>var_list</code></strong> :&ensp;<code>list</code></dt>
+<dd>A list containing the group of variables used for each equation.
+All the variables must be present only once in each equation sublist.
+e. g. with 3 variables, len(var_list) = 3 and the sublists looks like
+[[[1], [2, 3]], [[2], [1, 3]], [[3], [1, 2]]] or
+[[[1, 2, 3]], [[2], [1], [3]], [[3], [1, 2]]]
+Note the index <strong>must start at 1</strong> to be compatible with fortran.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variable and equations.</dd>
+<dt><strong><code>num_set</code></strong> :&ensp;<code> array(N)</code></dt>
+<dd>&nbsp;</dd>
+<dt>The number of set for each polynomial equation.</dt>
+<dt><strong><code>num_indices</code></strong> :&ensp;<code>array(N,
+NUM_SETS)</code></dt>
+<dd>Contains the 'list' of all the coefficients, sorting such poly1 coef, poly2 coef&hellip;</dd>
+<dt><strong><code>index</code></strong> :&ensp;<code>array (N, NUM_SETS, NUM_INDICES)</code></dt>
+<dd>Contains the 'list' of all the variable, in each set for each equation.</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_partition</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def make_plp_part(N, var_list):
+    &#34;&#34;&#34; Create `POLSYS_PLP` arguments for plp-homogeneous partition.
+
+    Compared to m-homogeneous partition, plp partition allow to change
+    the partition for each equation. With this partition, the number of
+    tracked paths will correspond to Bézout PLP number.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations.
+    var_list : list
+        A list containing the group of variables used for each equation.
+        All the variables must be present only once in each equation sublist.
+        e. g. with 3 variables, len(var_list) = 3 and the sublists looks like
+        [[[1], [2, 3]], [[2], [1, 3]], [[3], [1, 2]]] or
+        [[[1, 2, 3]], [[2], [1], [3]], [[3], [1, 2]]]
+        Note the index **must start at 1** to be compatible with fortran.
+
+    Returns
+    -------
+    N : int
+        The number of variable and equations.
+    num_set :  array(N)
+       The number of set for each polynomial equation.
+    num_indices : array(N,  NUM_SETS)
+        Contains the &#39;list&#39; of all the coefficients, sorting such poly1 coef, poly2 coef...
+    index : array (N, NUM_SETS, NUM_INDICES)
+        Contains the &#39;list&#39; of all the variable, in each set for each equation.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_partition`.
+    &#34;&#34;&#34;
+    # Check if N == len(var_list)
+    if N != len(var_list):
+        raise ValueError(&#39;len(var_list) is {} instead of {}&#39;.format(len(var_list), N))
+
+    # populated input matrices for fortran
+    num_set = np.array([len(part) for part in var_list])
+    num_indices = np.zeros((N, N))
+    # create full index array
+    # this the same for all row
+    index = np.zeros((N, max(num_set), N))
+    for i, part in enumerate(var_list):
+        for j, var in enumerate(part):
+            num_indices[i, j] = len(var)
+            index[i, j, 0:len(var)] = np.array(var)
+
+    return N, num_set, num_indices, index</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.solve_univar"><code class="name flex">
+<span>def <span class="ident">solve_univar</span></span>(<span>P, tracktol=1e-10, finaltol=1e-12, singtol=1e-14, dense=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Solve univariate polynomial ordered by ascending power order.</p>
+<p>This function is a short hand to solve univariate case where the calling
+sequence can be simplified.</p>
+<p>Parameters</p>
+<hr>
+<p>P : iterable
+Coefficient of the polynomial ordered by ascending order.
+tracktol : float
+is the local error tolerance allowed the path tracker along
+the path.
+finaltol : float
+is the accuracy desired for the final solution.
+It is used
+for both the absolute and relative errors in a mixed error criterion.
+singtol : float
+is the singularity test threshold used by <code>SINGSYS_PLP</code>.
+If
+<code>singtol &lt;= 0.0</code> on input, then <code>singtol</code> is reset to a default value.
+dense : bool
+if <code>True</code>, select the <code>TARGET_SYSTEM_USER</code> optimized for dense polynomial
+(horner). If <code>False</code> (default) the defaut <code>POLSYS_PLP TARGET_SYSTEM</code> is
+used. The default choice is safer.</p>
+<p>Returns</p>
+<hr>
+<p>roots : array
+are the complex roots of the polynomial.</p>
+<p>Remarks</p>
+<hr>
+<p>For convenience the homogeneous variable due to the complex projective space
+are not return with this simplified interface.</p>
+<p>Examples</p>
+<hr>
+<p>Consider the following example
+<code>x**2 - 3*x + 2 = 0</code>
+With 2 solutions in C : {2, 1}</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>roots = solve_univar([2., -3., 1.])
+# doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+np.sort(roots.real)
+array([1., 2.])</p>
+</blockquote>
+</blockquote>
+</blockquote></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def solve_univar(P, tracktol=1e-10, finaltol=1e-12, singtol=1e-14, dense=False):
+    &#34;&#34;&#34; Solve univariate polynomial ordered by ascending power order.
+
+    This function is a short hand to solve univariate case where the calling
+    sequence can be simplified.
+
+    Parameters
+    ----------
+    P : iterable
+        Coefficient of the polynomial ordered by ascending order.
+    tracktol : float
+        is the local error tolerance allowed the path tracker along
+        the path.
+    finaltol : float
+        is the accuracy desired for the final solution.  It is used
+        for both the absolute and relative errors in a mixed error criterion.
+   singtol : float
+       is the singularity test threshold used by `SINGSYS_PLP`.  If
+       `singtol &lt;= 0.0` on input, then `singtol` is reset to a default value.
+    dense : bool
+       if `True`, select the `TARGET_SYSTEM_USER` optimized for dense polynomial
+       (horner). If `False` (default) the defaut `POLSYS_PLP TARGET_SYSTEM` is
+       used. The default choice is safer.
+
+    Returns
+    -------
+    roots : array
+        are the complex roots of the polynomial.
+
+    Remarks
+    --------
+    For convenience the homogeneous variable due to the complex projective space
+    are not return with this simplified interface.
+
+    Examples
+    --------
+    Consider the following example
+    ```
+    x**2 - 3*x + 2 = 0
+    ```
+    With 2 solutions in C : {2, 1}
+    &gt;&gt;&gt; roots = solve_univar([2., -3., 1.])  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+    &gt;&gt;&gt; np.sort(roots.real)
+    array([1., 2.])
+    &#34;&#34;&#34;
+    out4polsys = from1Darray(P)
+    # Pass it to POLSYS_PLP
+    polsys.init_poly(*out4polsys)
+    # Create homogeneous partition
+    part = make_h_part(1)
+    # Pass it to POLSYS_PLP
+    polsys.init_partition(*part)
+    # Solve
+    bplp = polsys.solve(tracktol, finaltol, singtol, dense)
+    # Get the roots, array of size (N+1) x bplp
+    roots = polsys.myroots
+    return roots[0, :]</code></pre>
+</details>
+</dd>
+<dt id="pypolsys.utils.toDense"><code class="name flex">
+<span>def <span class="ident">toDense</span></span>(<span>N, n_coef_per_eq, all_coef, all_deg, preserve=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert a <em>sparse</em> list of mononials suitable for <code>POLSYS_PLP</code>
+into a list of ordered monimials of a dense polynomials.</p>
+<p>Such preprocessing is <strong>mandatory to use multiple variable Horner scheme</strong>,
+ie <code>dense=True</code> in <code>polysys.solve</code>.
+For nearly dense polynomial, this method can significantly speed the polynomial
+and the Jacobian evaluation during the tracking.</p>
+<ul>
+<li>Some absent monomial may be added to preserve the dense structure.</li>
+<li>All monomials are listed left to right. The rightmost variable degree will
+change for each terms.</li>
+<li>If a monimial is added to preserve the structure, its degree is set to 0,
+to avoid to change the Bezout Number computation in <code>POLSYS_PLP</code>.</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations</dd>
+<dt><strong><code>n_coef_per_eq</code></strong> :&ensp;<code>array</code></dt>
+<dd>The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+total number of coefficeint</dd>
+<dt><strong><code>all_coef</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the coefficients of each monimial for each equation,
+starting by the first one.</dd>
+<dt><strong><code>all_deg</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the degrees of each monimial for each equation,
+starting by the first one.
+This is an array such the line number is the terms number and the column contain
+contains the degree of each variable.
+ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j</dd>
+<dt><strong><code>preserve</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Put the degree of vanishing coefficient to 0 to avoid to change Bezout number
+computation in <code>POLSYS_PLP</code> if dense structure is used. The default is True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>The number of variables and equations</dd>
+<dt><strong><code>n_coef_per_eq</code></strong> :&ensp;<code>array</code></dt>
+<dd>The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+total number of coefficeint</dd>
+<dt><strong><code>all_coef</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the coefficients of each monimial for each equation,
+starting by the first one.</dd>
+<dt><strong><code>all_deg</code></strong> :&ensp;<code>array</code></dt>
+<dd>Contains succesivelly all the degrees of each monimial for each equation,
+starting by the first one.
+This is an array such the line number is the terms number and the column contain
+contains the degree of each variable.</dd>
+</dl>
+<h2 id="remarks">Remarks</h2>
+<p>Use as a tuple, the output can be directly pass to <code>init_poly</code>.
+Possible to enhance Horner speed if the highest degree is on the first variable.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python-repl">&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; x, y = sym.symbols('x y')
+&gt;&gt;&gt; sparse = fromSympy([sym.poly(3j*x**3 + 1, (x))])
+&gt;&gt;&gt; toDense(*sparse)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+  &gt; 200.0 % more coefs after conversion to dense.
+(1,
+array([4]...), array([1.+0.j, 0.+0.j, 0.+0.j, 0.+3.j]),
+array([[0],
+      [0],
+      [0],
+     [3]]...))
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def toDense(N, n_coef_per_eq, all_coef, all_deg, preserve=True):
+    &#34;&#34;&#34; Convert a *sparse* list of mononials suitable for `POLSYS_PLP`
+    into a list of ordered monimials of a dense polynomials.
+
+    Such preprocessing is **mandatory to use multiple variable Horner scheme**,
+    ie `dense=True` in `polysys.solve`.
+    For nearly dense polynomial, this method can significantly speed the polynomial
+    and the Jacobian evaluation during the tracking.
+
+      - Some absent monomial may be added to preserve the dense structure.
+      - All monomials are listed left to right. The rightmost variable degree will
+        change for each terms.
+      - If a monimial is added to preserve the structure, its degree is set to 0,
+        to avoid to change the Bezout Number computation in `POLSYS_PLP`.
+
+    Parameters
+    ----------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+        ex : if ther 4th term is (3.12+2j) x1^2 x2^3 x3^0, this yields
+        all_deg(4, :) = [2, 3, 0] and all_coef(4) = 3.12+2j
+    preserve : bool, optional
+        Put the degree of vanishing coefficient to 0 to avoid to change Bezout number
+        computation in `POLSYS_PLP` if dense structure is used. The default is True.
+
+    Returns
+    -------
+    N : int
+        The number of variables and equations
+    n_coef_per_eq : array
+        The number of terms in each polynomial equation. Sum(n_coef_per_eq) give the
+        total number of coefficeint
+    all_coef : array
+        Contains succesivelly all the coefficients of each monimial for each equation,
+        starting by the first one.
+    all_deg : array
+        Contains succesivelly all the degrees of each monimial for each equation,
+        starting by the first one.
+        This is an array such the line number is the terms number and the column contain
+        contains the degree of each variable.
+
+    Remarks
+    -------
+    Use as a tuple, the output can be directly pass to `init_poly`.
+    Possible to enhance Horner speed if the highest degree is on the first variable.
+
+    Examples
+    --------
+    &gt;&gt;&gt; import sympy as sym
+    &gt;&gt;&gt; x, y = sym.symbols(&#39;x y&#39;)
+    &gt;&gt;&gt; sparse = fromSympy([sym.poly(3j*x**3 + 1, (x))])
+    &gt;&gt;&gt; toDense(*sparse)  # doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+      &gt; 200.0 % more coefs after conversion to dense.
+    (1,
+    array([4]...), array([1.+0.j, 0.+0.j, 0.+0.j, 0.+3.j]),
+    array([[0],
+          [0],
+          [0],
+         [3]]...))
+    &#34;&#34;&#34;
+    # dmax contains the degree max in all variable for each equation
+    dmax = np.zeros((N, N), dtype=np.int32)
+
+    # setup new coefs matrix
+    deg_list = []
+    coef_list = []
+    n_coef_per_eq_ = np.zeros_like(n_coef_per_eq)
+    c = []
+    # loop or equations
+    start = 0
+    for n in range(0, N):
+        Nn = n_coef_per_eq[n]
+        deg_n = all_deg[start:(start+Nn)]
+        dmax[n, :] = np.max(deg_n, axis=0)
+        # store ite
+        deg_mat = np.zeros(dmax[n, :] + 1, dtype=complex)
+
+        for coef, deg in zip(all_coef[start:(start+Nn)], deg_n):
+            deg_mat[tuple(deg)] = coef
+        c.append(deg_mat)
+        # extract the indices and value
+        deg_i = np.zeros((deg_mat.size, N), dtype=np.int32)
+        coef_i = np.zeros((deg_mat.size,), dtype=complex)
+        n_coef_per_eq_[n] = deg_mat.size
+        k = 0
+        for index, val in np.ndenumerate(deg_mat):
+            if (val == 0) and preserve:
+                # Put degree to 0 to avoid to change bezout Number for 0
+                deg_i[k, :] = np.zeros_like(index)
+            else:
+                deg_i[k, :] = np.array(index)
+            coef_i[k] = val
+            k += 1
+        deg_list.append(deg_i)
+        coef_list.append(coef_i)
+
+        start += Nn
+
+    print(&#39;  &gt; {} % more coefs after conversion to dense.&#39;.format(np.sum(n_coef_per_eq_)
+                                                         / np.sum(n_coef_per_eq)
+                                                         * 100.))
+    return N, n_coef_per_eq_, np.hstack(coef_list), np.vstack(deg_list)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pypolsys" href="index.html">pypolsys</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="pypolsys.utils.di" href="#pypolsys.utils.di">di</a></code></li>
+<li><code><a title="pypolsys.utils.from1Darray" href="#pypolsys.utils.from1Darray">from1Darray</a></code></li>
+<li><code><a title="pypolsys.utils.fromSympy" href="#pypolsys.utils.fromSympy">fromSympy</a></code></li>
+<li><code><a title="pypolsys.utils.make_h_part" href="#pypolsys.utils.make_h_part">make_h_part</a></code></li>
+<li><code><a title="pypolsys.utils.make_mh_part" href="#pypolsys.utils.make_mh_part">make_mh_part</a></code></li>
+<li><code><a title="pypolsys.utils.make_plp_part" href="#pypolsys.utils.make_plp_part">make_plp_part</a></code></li>
+<li><code><a title="pypolsys.utils.solve_univar" href="#pypolsys.utils.solve_univar">solve_univar</a></code></li>
+<li><code><a title="pypolsys.utils.toDense" href="#pypolsys.utils.toDense">toDense</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
