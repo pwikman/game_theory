@@ -1,7 +1,7 @@
 from src.models.gt_utils import is_strategy_better, stra_em, admissible_block
 from src.models.gt_index_calc import calculate_index, rounder
 from src.models.gt_block_generator import potential_support_pairs, block_game
-from src.models.game_class import create_n_player_game
+from src.models.gt_game_class import create_n_player_game
 from src.models.zero_solver import zero_solver
 
 # Functions for finding minimal game blocks

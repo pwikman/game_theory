@@ -1,7 +1,8 @@
 gt_block_sim
 ==============================
 
-Coming up with alogrithms to solve games and check the cutting power of block concepts
+Coming up with alogrithms to solve games and check the cutting power of block concepts.
+Check out https://github.com/nennigb/pypolsys for python wrapper of the fortran solver needed.
 
 Project Organization
 ------------
